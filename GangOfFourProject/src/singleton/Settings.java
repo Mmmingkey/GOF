@@ -5,7 +5,9 @@
 
 package singleton;
 
-public class Settings {
+import java.io.Serializable;
+
+public class Settings implements Serializable {
 
     private Settings() {
     }
@@ -60,10 +62,14 @@ public class Settings {
     // 장점 : thread safe함, getInstance5 메소드가 처음 실행될 때 SettingsHolder 내부클래스가 load되며 인스턴스 초기화됨 즉, 성능이 앞서 말한 singleton중 가장 좋음
     // 단점 : 음,, 내부 메소드를 사용하므로 java runtime data area의 methoad area의 메모리 낭비가 조금 있을 수 있다,,? 정도 ㅋㅋ
     private static class SettingsHolder {
-        private static final Settings instance5 = new Settings();
+        private static final Settings INSTANCE_5 = new Settings();
     }
     public static Settings getInstance5() {
-        return Settings.SettingsHolder.instance5;
+        return SettingsHolder.INSTANCE_5;
     }
 
+    // 객체 역직렬화 할 때 실행되는 메소드 (원랜 여기서 new Settings() 등의 작업이 이루어짐)
+    protected Object readResolve(){
+        return getInstance5();
+    }
 }
