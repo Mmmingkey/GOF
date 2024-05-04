@@ -45,7 +45,7 @@ public class Settings implements Serializable {
 
     //4. double checked locking singleton
     // 장점 : thread safe함, instance4가 null일 때 (초기화 전)에만 synchronized 하게 즉, 필요한 부분만 동기적으로 동작함 -> synchronized lazy singleton 보다 성능이 좋음
-    // 단점 : innerclass singleton 보다 성능이 안좋음
+    // 단점 : innerclass singleton 보다 성능이 안좋음, 복잡함
     private static volatile Settings instance4;
     public static Settings getInstance4() {
         if (instance4 == null) {

@@ -13,7 +13,7 @@ public class App{
         Settings st2 = null;
         //private 생성자 무시하고 객체 생성하는 방법
 
-        // 1. reflection 대응이 안됨
+        // 1. reflection사용 시 class는 대응이 안됨 -> 단 enum으로 구현 시 대응 가능 (enum은 reflection으로 인스턴스생성 행위를 막아놨음 단, eager singleton으로 동작)
 //        Constructor<Settings> ct = Settings.class.getDeclaredConstructor();
 //        ct.setAccessible(true);
 //        Settings settings = ct.newInstance();
