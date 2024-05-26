@@ -1,6 +1,6 @@
 package factory.after;
 
-public class WhiteShipFactory implements ShipFactory{
+public class WhiteShipFactory extends DefaultShipFactory{
 
     @Override
     public Ship createShip() {
